@@ -1,0 +1,16 @@
+[alias]
+  st = status
+  co = checkout
+  mt = mergetool
+[user]
+  email = transytai12a1@gmail.com
+  name = Tai Tran
+[merge]
+  tool = vimdiff2
+  conflictstyle = diff3
+[mergetool]
+  keepBackup = false
+[init]
+  defaultBranch = main
+[core]
+	excludesfile = /Users/taitran/.gitignore_global
