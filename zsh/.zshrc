@@ -49,6 +49,5 @@ bindkey "^[[1;3D" backward-word
 alias vi="nvim"
 alias ls="ls -1 --color=always" 
 alias gst="git status"
-# alias tmux='tmux attach-session -t "bq project" || tmux new-session "bq project"'
 
 export prj="$HOME/Project"
