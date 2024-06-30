@@ -51,3 +51,5 @@ alias ls="ls -1 --color=always"
 alias gst="git status"
 
 export prj="$HOME/Project"
+
+fastfetch
