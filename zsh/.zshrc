@@ -52,4 +52,8 @@ alias gst="git status"
 
 export prj="$HOME/Project"
 
+# TFenv
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+# Fastfetch onboard
 fastfetch
