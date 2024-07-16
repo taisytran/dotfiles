@@ -8,8 +8,7 @@ This repository contains my personal dotfiles and configurations for various too
 - [Usage](#usage)
 - [Included Configurations](#included-configurations)
 - [Structure](#structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Updating Submodules](#updating-submodules)
 
 ## Installation
 
@@ -33,12 +32,6 @@ To install these dotfiles on your system, follow these steps:
 
    ```bash
    brew install stow
-   ```
-
-   On Linux, you can install Stow using your package manager. For example, on Ubuntu:
-
-   ```bash
-   sudo apt-get install stow
    ```
 
 4. **Install the Dotfiles Using Stow:**
@@ -89,3 +82,21 @@ dotfiles/
 └── git/
     └── .gitconfig
 ```
+
+## Updating Submodules
+
+To update all submodules to their latest versions, you can use the provided Rake task. This task initializes and updates all submodules recursively.
+
+1. **Navigate to the dotfiles Directory:**
+
+   ```bash
+   cd ~/dotfiles
+   ```
+
+2. **Run the Rake Task:**
+
+   ```bash
+   rake update
+   ```
+
+This will initialize any uninitialized submodules and update all submodules to their latest commits from their respective remote repositories.
