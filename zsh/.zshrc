@@ -51,6 +51,7 @@ alias ls="ls -1 --color=always"
 alias gst="git status"
 
 export prj="$HOME/Project"
+export notes="$HOME/Documents/MyNotes"
 
 # TFenv
 export PATH="$HOME/.tfenv/bin:$PATH"
