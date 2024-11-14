@@ -14,3 +14,4 @@
   defaultBranch = main
 [core]
 	excludesfile = /Users/taitran/.gitignore_global
+	editor = nvim

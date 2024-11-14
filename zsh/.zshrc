@@ -2,7 +2,6 @@
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "lukechilds/zsh-nvm"
 
@@ -23,9 +22,9 @@ esac
 source <(fzf --zsh)
 
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000
+export HISTSIZE=50000
 export SAVEHIST=$HISTSIZE
-export HISTORY_IGNORE="([bf]g *|cd ..|l[alsh]#( *)#|less *|vim# *|git push -f|ls|ls -a|tig|clear)"
+export HIST_IGNORE_PATTERN="(fg|bg|cd ..|ls|l[alsh]*|clear|vim *|less *|git push -f|tig)"
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -33,6 +32,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 # fzf end
 
@@ -56,5 +56,5 @@ export notes="$HOME/Documents/MyNotes"
 # TFenv
 export PATH="$HOME/.tfenv/bin:$PATH"
 
-# Fastfetch onboard
-fastfetch
+# Prompt
+eval "$(starship init zsh)"
