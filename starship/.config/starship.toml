@@ -1,0 +1,92 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+command_timeout = 1000
+
+[character]
+success_symbol = '[➜](bold green)'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# Disable other modules
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[php]
+disabled = true
+
+[perl]
+disabled = true
+
+[elixir]
+disabled = true
+
+[dotnet]
+disabled = true
+
+
+## Custom ###
+[custom.git_user]
+command = "git config user.email 2>/dev/null || echo 'No User'"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = " [$output](bold cyan) "  # Adds a trailing space for separation
+#
+# [custom.git_account]
+# command = "git config user.email 2>/dev/null || echo 'No Email Set'"
+# when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+# format = "| 🔑 [$output](bold yellow) "  # Adds a separator '|' with leading/trailing space for clarity
+#
+# [custom.git_remote]
+# command = "git remote get-url origin 2>/dev/null || echo 'No Remote'"
+# when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+# format = "🌐 [$output](dimmed white) "
+
+# [custom.git_upstream]
+# command = "git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || echo 'No Upstream'"
+# when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+# format = "🔗 [$output](bold magenta) "
+
+[custom.git_ahead_behind]
+command = '''
+output=$(git rev-list --count --left-right @{upstream}...HEAD 2>/dev/null)
+ahead=$(echo $output | awk '{print $2}')
+behind=$(echo $output | awk '{print $1}')
+conflict=$(git ls-files --unmerged 2>/dev/null)
+result=""
+
+# If there are merge conflicts, show a conflict indicator
+if [ -n "$conflict" ]; then
+  result="⚠️ Conflict"
+fi
+
+# Display Ahead if there are commits ahead
+if [ "$ahead" -ne 0 ]; then
+  result="⇡$ahead"
+fi
+
+# Display Behind if there are commits behind
+if [ "$behind" -ne 0 ]; then
+  if [ -n "$result" ]; then
+    result="$result | ⇣$behind"  # Add a separator if both Ahead and Behind are non-zero
+  else
+    result="⇣$behind"
+  fi
+fi
+
+echo $result
+'''
+when = "git rev-parse --is-inside-work-tree 2>/dev/null && git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null"
+format = '[$output](dimmed white) '
+style = "bold green"
