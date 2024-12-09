@@ -23,3 +23,5 @@ task :update do
 
   puts "All submodules have been initialized and updated to their latest versions."
 end
+
+task default: :update
